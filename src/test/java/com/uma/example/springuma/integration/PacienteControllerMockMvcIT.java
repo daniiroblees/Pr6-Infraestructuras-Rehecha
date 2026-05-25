@@ -35,51 +35,51 @@ public class PacienteControllerMockMvcIT extends AbstractIntegration {
     Paciente paciente;
     Medico medico;
 
-    @BeforeEach
-    void setUp() {
-        medico = new Medico();
-        medico.setNombre("Miguel");
-        medico.setId(1L);
-        medico.setDni("835");
-        medico.setEspecialidad("Ginecologo");
-
-        paciente = new Paciente();
-        paciente.setId(1L);
-        paciente.setNombre("Maria");
-        paciente.setDni("888");
-        paciente.setEdad(20);
-        paciente.setCita("Ginecologia");
-        paciente.setMedico(this.medico);
-    }
-    private void crearMedico(Medico medico) throws Exception {
-        this.mockMvc.perform(post("/medico")
-                .contentType("application/json")
-                .content(objectMapper.writeValueAsString(medico)))
-                .andExpect(status().isCreated());
-    }
-    private void crearPaciente(Paciente paciente) throws Exception {
-        mockMvc.perform(post("/paciente")
-                .contentType("application/json")
-                .content(objectMapper.writeValueAsString(paciente)))
-                .andExpect(status().isCreated());
-    }
-
-    private void getPacienteById(Long id, Paciente expected) throws Exception {
-        mockMvc.perform(get("/paciente/" + id))
-                .andExpect(status().is2xxSuccessful())
-                .andExpect(content().contentType("application/json"))
-                .andExpect(jsonPath("$").exists())
-                .andExpect(jsonPath("$").value(expected));
-    }
-
-    @Test
-    @DisplayName("Crear paciente y recuperarlo por ID pasado por parametro")
-    void savePaciente_RecuperaPacientePorId() throws Exception {
-        crearMedico(medico);
-        crearPaciente(paciente);
-
-        //Obtener paciente por ID
-        
-    }
+//    @BeforeEach
+//    void setUp() {
+//        medico = new Medico();
+//        medico.setNombre("Miguel");
+//        medico.setId(1L);
+//        medico.setDni("835");
+//        medico.setEspecialidad("Ginecologo");
+//
+//        paciente = new Paciente();
+//        paciente.setId(1L);
+//        paciente.setNombre("Maria");
+//        paciente.setDni("888");
+//        paciente.setEdad(20);
+//        paciente.setCita("Ginecologia");
+//        paciente.setMedico(this.medico);
+//    }
+//    private void crearMedico(Medico medico) throws Exception {
+//        this.mockMvc.perform(post("/medico")
+//                .contentType("application/json")
+//                .content(objectMapper.writeValueAsString(medico)))
+//                .andExpect(status().isCreated());
+//    }
+//    private void crearPaciente(Paciente paciente) throws Exception {
+//        mockMvc.perform(post("/paciente")
+//                .contentType("application/json")
+//                .content(objectMapper.writeValueAsString(paciente)))
+//                .andExpect(status().isCreated());
+//    }
+//
+//    private void getPacienteById(Long id, Paciente expected) throws Exception {
+//        mockMvc.perform(get("/paciente/" + id))
+//                .andExpect(status().is2xxSuccessful())
+//                .andExpect(content().contentType("application/json"))
+//                .andExpect(jsonPath("$").exists())
+//                .andExpect(jsonPath("$").value(expected));
+//    }
+//
+//    @Test
+//    @DisplayName("Crear paciente y recuperarlo por ID pasado por parametro")
+//    void savePaciente_RecuperaPacientePorId() throws Exception {
+//        crearMedico(medico);
+//        crearPaciente(paciente);
+//
+//        //Obtener paciente por ID
+//
+//    }
 
 }

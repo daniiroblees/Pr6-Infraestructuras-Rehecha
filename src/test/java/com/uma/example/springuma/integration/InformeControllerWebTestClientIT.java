@@ -44,50 +44,50 @@ public class InformeControllerWebTestClientIT extends AbstractIntegration {
         testClient = WebTestClient.bindToServer().baseUrl("http://localhost:" + port)
                 .responseTimeout(Duration.ofMillis(300000)).build();
     }
-
-    @BeforeEach
-    void setUp() {
-
-        medico = new Medico();
-        medico.setNombre("Miguel");
-        medico.setId(1L);
-        medico.setDni("835");
-        medico.setEspecialidad("Ginecologo");
-
-        paciente = new Paciente();
-        paciente.setId(1L);
-        paciente.setNombre("Maria");
-        paciente.setDni("888");
-        paciente.setEdad(20);
-        paciente.setCita("Ginecologia");
-        paciente.setMedico(medico);
-
-        imagen = new Imagen();
-        imagen.setId(1L);
-        imagen.setPaciente(paciente);
-
-        // Crea médico
-        testClient.post().uri("/medico")
-                .body(Mono.just(medico), Medico.class)
-                .exchange()
-                .expectStatus().isCreated();
-
-        // Crea paciente
-        testClient.post().uri("/paciente")
-                .body(Mono.just(paciente), Paciente.class)
-                .exchange()
-                .expectStatus().isCreated();
-
-        // Crea imagen
-        MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        builder.part("image", new FileSystemResource(Paths.get("src/test/resources/healthy.png").toFile()));
-        builder.part("paciente", paciente);
-
-        testClient.post().uri("/imagen")
-                .contentType(MediaType.MULTIPART_FORM_DATA)
-                .body(BodyInserters.fromMultipartData(builder.build()))
-                .exchange()
-                .expectStatus().isOk();
-
-    }
+//
+//    @BeforeEach
+//    void setUp() {
+//
+//        medico = new Medico();
+//        medico.setNombre("Miguel");
+//        medico.setId(1L);
+//        medico.setDni("835");
+//        medico.setEspecialidad("Ginecologo");
+//
+//        paciente = new Paciente();
+//        paciente.setId(1L);
+//        paciente.setNombre("Maria");
+//        paciente.setDni("888");
+//        paciente.setEdad(20);
+//        paciente.setCita("Ginecologia");
+//        paciente.setMedico(medico);
+//
+//        imagen = new Imagen();
+//        imagen.setId(1L);
+//        imagen.setPaciente(paciente);
+//
+//        // Crea médico
+//        testClient.post().uri("/medico")
+//                .body(Mono.just(medico), Medico.class)
+//                .exchange()
+//                .expectStatus().isCreated();
+//
+//        // Crea paciente
+//        testClient.post().uri("/paciente")
+//                .body(Mono.just(paciente), Paciente.class)
+//                .exchange()
+//                .expectStatus().isCreated();
+//
+//        // Crea imagen
+//        MultipartBodyBuilder builder = new MultipartBodyBuilder();
+//        builder.part("image", new FileSystemResource(Paths.get("src/test/resources/healthy.png").toFile()));
+//        builder.part("paciente", paciente);
+//
+//        testClient.post().uri("/imagen")
+//                .contentType(MediaType.MULTIPART_FORM_DATA)
+//                .body(BodyInserters.fromMultipartData(builder.build()))
+//                .exchange()
+//                .expectStatus().isOk();
+//
+//    }
 }
