@@ -39,7 +39,7 @@ jobs:
         if: success() || failure() # Se ejecuta aunque fallen los tests para ver qué ha fallado
         with:
           name: Informe de Pruebas Unitarias e Integración
-          path: '**/target/surefire-reports/*.xml,**/target/failsafe-reports/*.xml'
+          path: 'target/surefire-reports/TEST-*.xml,target/failsafe-reports/TEST-*.xml'
           reporter: java-junit
 
       # e) Badge de cobertura
