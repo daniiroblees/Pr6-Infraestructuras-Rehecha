@@ -1,6 +1,6 @@
 # SpringUMA — Medical Records System
 
-![CI Hospital](https://github.com/daniiroblees/Pr6-Infraestructuras-Rehecha/actions/workflows/ci-hospital.yml/badge.svg)
+![CI Hospital](https://github.com/daniiroblees/Pr6-Infraestructuras-Rehecha/actions/workflows/ci-hospital-pr7.yml/badge.svg)
 
 > ⚠️ Replace `<YOUR_USER>` and `<YOUR_REPO>` with your actual GitHub account details.
 

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: medicos-app
+  namespace: ips
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: medicos
+  template:
+    metadata:
+      labels:
+        app: medicos
+    spec:
+      imagePullSecrets:
+        - name: mi-registro-secreto # El que acabamos de crear
+      containers:
+        - name: medicos-container
+          # SUSTITUYE ESTO POR TU IMAGEN REAL
+          image: daniehhh/practica-6-infraestructurasyprocesosdesoporte:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
