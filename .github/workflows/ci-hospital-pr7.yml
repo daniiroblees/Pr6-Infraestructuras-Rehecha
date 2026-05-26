@@ -2,10 +2,9 @@ name: Docker Build & Push on Github
 
 on:
   push:
-    branches: [ "main" ]
-    tags: [ 'v*.*.*' ]
+    branches: [ "**" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "**" ]
 
 env:
   # Dynamic construction: username/github-repo-name
